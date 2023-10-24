@@ -142,21 +142,21 @@ function Maze(Width, Height) {
         var ny = pos.y + modDir[direction].y;
 
         if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
-          //Check if the tile is already visited
+          //Vérifie si la case a déjà été visitée
           if (!mazeMap[nx][ny].visited) {
-            //Carve through walls from this tile to next
+            // Taille à travers les murs de cette tuile à la suivante
             mazeMap[pos.x][pos.y][direction] = true;
             mazeMap[nx][ny][modDir[direction].o] = true;
 
-            //Set Currentcell as next cells Prior visited
+            // Défini Currentcell comme prochaines cellules précédemment visitées
             mazeMap[nx][ny].priorPos = pos;
-            //Update Cell position to newly visited location
+            //Mettre à jour la position de la cellule à l'emplacement nouvellement visité
             pos = {
               x: nx,
               y: ny,
             };
             cellsVisited++;
-            //Recursively call this method on the next tile
+            // Appelle récursivement cette méthode sur la tuile suivante
             move = true;
             break;
           }
@@ -164,8 +164,8 @@ function Maze(Width, Height) {
       }
 
       if (!move) {
-        //  If it failed to find a direction,
-        //  move the current position back to the prior cell and Recall the method.
+        //  SI ne trouve pas de direction,
+        //  bouge sur la cell prioritaire and réappelle la méthode.
         pos = mazeMap[pos.x][pos.y].priorPos;
       }
       if (numCells == cellsVisited) {
@@ -557,7 +557,7 @@ window.onresize = function () {
 };
 
 function makeMaze() {
-  //document.getElementById("mazeCanvas").classList.add("border");
+  // document.getElementById("mazeCanvas").classList.add("border");
   if (player != undefined) {
     player.unbindKeyDown();
     player = null;
