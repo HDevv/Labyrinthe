@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Roboto&display=swap");
+
+* {
+  font-family: "Caveat";
+}
 html,
 body {
   width: 100vw;
